@@ -56,8 +56,8 @@ class CreateRacesTable extends Migration
             return new ExtendedBlueprint($table, $callback);
         });
 
-// then create tables 
-$schema->create('races', function (ExtendedBlueprint $table) {
+        // then create tables 
+        $schema->create('races', function (ExtendedBlueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
