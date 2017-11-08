@@ -1,0 +1,50 @@
+.portrait {
+	width: 300px;
+	height: 250px;
+	float: left;
+}
+
+.character {
+	margin-left: 300px;
+	height: 250px;
+}
+
+#characterImg {
+    width: 250px;
+    height: 250px;
+}
+
+.stats {
+	text-align: right;
+	width: 50%;
+	margin: auto;
+}
+
+.attribute-name {
+	margin-right: 5px;
+	width: 80%
+	margin-left: auto;
+	float: left;
+}
+
+.attribute-num {
+	margin-left: 10px;
+	width: 20%;
+	margin-right: 20px;
+}
+
+img {
+	border: 4px outset #b5ab6e;
+	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
+	background-image: url("/images/green_cup.png");
+}
+
+hr {
+	width: 50%;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+h3 {
+	margin: 3px;
+}

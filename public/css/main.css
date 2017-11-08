@@ -1,0 +1,22 @@
+.container {
+	width: fit-content;
+	margin: auto;
+	text-align: center;
+	background-color: #eada9f;
+	padding: 10px 20px;
+	border: 4px outset #b5ab6e;
+	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
+	background-image: url("/images/notebook.png");
+}
+
+footer {
+	text-align: center;
+	color: #FFFFFF;
+}
+
+body {
+	font-family: 'Cinzel Decorative', cursive;
+	background-color: #232323;
+	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
+	background-image: url("/images/black_paper.png");
+}
