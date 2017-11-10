@@ -2,14 +2,14 @@
 
 
 @push('head')
-<script src="https://use.fontawesome.com/623053ff70.js"></script>
 <link href="/css/form.css" type='text/css' rel='stylesheet'>
 @endpush
 
 @section('content')
 <div class="container">
-    <h1>Generate a Character</h1>
-    <form action="/character">
+    <h1>Create Your Character</h1>
+    <form action="/character" method="POST">
+        {{ csrf_field() }}
         <div class="form-row">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="{{ old('name') }}">

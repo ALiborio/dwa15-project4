@@ -9,6 +9,26 @@
 	background-image: url("/images/notebook.png");
 }
 
+.welcome {
+	width: 50%;
+	font-size: 1.1em;
+}
+
+.nav-home {
+	margin-left: 1px;
+	margin-right: 5px;
+	font-size: 1.3em;
+}
+
+.nav-link {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.nav-selected {
+	font-weight: bold;
+}
+
 footer {
 	text-align: center;
 	color: #FFFFFF;
@@ -19,4 +39,28 @@ body {
 	background-color: #232323;
 	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
 	background-image: url("/images/black_paper.png");
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+nav {
+	background-color: #eada9f;
+	border-bottom: 2px solid #b5ab6e;
+	margin: 0px;
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	vertical-align: middle;
+}
+
+nav a {
+	text-decoration: none;
+	color: #000000;
+	vertical-align: middle;
+}
+
+nav img {
+	width: 25px;
+	height: 25px;
+	margin-top: 5px;
 }
