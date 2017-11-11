@@ -9,6 +9,10 @@
 	background-image: url("/images/notebook.png");
 }
 
+.game-master {
+	font-family: 'Cinzel Decorative', cursive;
+}
+
 .welcome {
 	width: 50%;
 	font-size: 1.1em;
@@ -30,13 +34,21 @@
 	font-weight: bold;
 }
 
+.nav-disabled {
+	color: rgba(0,0,0,0.5);
+}
+
+.right {
+	float: right;
+}
+
 footer {
 	text-align: center;
 	color: #FFFFFF;
 }
 
 body {
-	font-family: 'Cinzel Decorative', cursive;
+	font-family: 'Spectral SC', serif;
 	background-color: #232323;
 	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
 	background-image: url("/images/black_paper.png");

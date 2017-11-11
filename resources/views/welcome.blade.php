@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container welcome">
-    <h1>GameMaster</h1>
+    <h1 class="game-master">GameMaster</h1>
 
     <p>
-        Welcome to GameMaster!
+        Welcome to <span class="game-master">GameMaster</span>!
     </p>
     <p>
         Create role-playing characters, manage them, and share them with your friends. Create a party and level up together!

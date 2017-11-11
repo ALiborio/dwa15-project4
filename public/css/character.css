@@ -14,6 +14,12 @@
     height: 250px;
 }
 
+#characterImg img {
+	border: 4px outset #b5ab6e;
+	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
+	background-image: url("/images/green_cup.png");
+}
+
 .stats {
 	text-align: right;
 	width: 50%;
@@ -33,11 +39,6 @@
 	margin-right: 20px;
 }
 
-img {
-	border: 4px outset #b5ab6e;
-	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
-	background-image: url("/images/green_cup.png");
-}
 
 hr {
 	width: 50%;
