@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>
-        @yield('title', 'Character Generator')
+        @yield('title', 'GameMaster')
     </title>
 
     <meta charset='utf-8'>
@@ -20,9 +20,11 @@
         <span class="nav-link @if(Route::currentRouteName() =='createCharacter') {{ 'nav-selected' }} @endif">
             <a href="/character">New</a>
         </span>
-        <span class="nav-link">
-            <a href="">Characters</a>
+        <span class="nav-link @if(Route::currentRouteName() =='showCharacter') {{ 'nav-selected' }} @endif">
+            <a href="/character/all">Characters</a>
         </span>
+
+        <!-- Right Aligned Nav Bar Items -->
         <span class="nav-link nav-disabled right">
             Log In
         </span>

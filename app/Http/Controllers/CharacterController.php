@@ -101,7 +101,7 @@ class CharacterController extends Controller
     {
         if ($id == 'all') {
             $results = Character::all();
-            return view('results')->with(['results' => $results]);
+            return view('search')->with(['results' => $results]);
         } else {
             $result = Character::find($id);
             return view('sheet')->with(['character' => $result]);

@@ -13,6 +13,10 @@
 	font-family: 'Cinzel Decorative', cursive;
 }
 
+h1.game-master {
+	font-size: 2em;
+}
+
 .welcome {
 	width: 50%;
 	font-size: 1.1em;
