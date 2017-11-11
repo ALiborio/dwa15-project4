@@ -25,7 +25,6 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        //
         return view('form')->with(['classList' => [
             'barbarian',
             'bard',
@@ -100,7 +99,13 @@ class CharacterController extends Controller
      */
     public function show($id)
     {
-        //
+        if ($id == 'all') {
+            $results = Character::all();
+            return view('results')->with(['results' => $results]);
+        } else {
+            $result = Character::find($id);
+            return view('sheet')->with(['character' => $result]);
+        }
     }
 
     /**

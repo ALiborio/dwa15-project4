@@ -5,14 +5,17 @@ Character Sheet
 @endsection
 
 @push('head')
-<script src="https://use.fontawesome.com/623053ff70.js"></script>
 <link href="/css/character.css" type='text/css' rel='stylesheet'>
 @endpush
 
 @section('content')
 <div class="container">
+    @if ($character == null)
+        <h3>
+            Character not found.
+        </h3>
+    @else
     <div class="portrait">
-        <img src="{{ $character->getImageUrl() }}" width="225" alt="{{ $character->race.' '.$character->gender.' '.$character->class }}" id="characterImg">
     </div>
     <div class="character">
         <h1 id="charName">
@@ -32,19 +35,34 @@ Character Sheet
         </p>
     </div>
 
-    <h3> Stats </h3>
+    <h3> {{ 'Level '.$character->level }} </h3>
     <hr>
     <div class="stats">
-        @foreach ($character->stats as $stat => $statNum)
-            <h3>
-                <span class="attribute-name">{{ ucfirst($stat) }}</span>
-                <span class="attribute-num">{{ $statNum }}</span>
-            </h3>
-        @endforeach
+        <h3>
+            <span class="attribute-name">Strength</span>
+            <span class="attribute-num">{{ $character->strength }}</span>
+        </h3>
+        <h3>
+            <span class="attribute-name">Dexterity</span>
+            <span class="attribute-num">{{ $character->dexterity }}</span>
+        </h3>
+        <h3>
+            <span class="attribute-name">Constitution</span>
+            <span class="attribute-num">{{ $character->constitution }}</span>
+        </h3>
+        <h3>
+            <span class="attribute-name">Intelligence</span>
+            <span class="attribute-num">{{ $character->intelligence }}</span>
+        </h3>
+        <h3>
+            <span class="attribute-name">Wisdom</span>
+            <span class="attribute-num">{{ $character->wisdom }}</span>
+        </h3>
+        <h3>
+            <span class="attribute-name">Charisma</span>
+            <span class="attribute-num">{{ $character->charisma }}</span>
+        </h3>
     </div>
-    <hr>
-    
-    <a href="{{ route('index') }}">Start Over</a>
-    <a href="{{ url()->full() }}">Regenerate</a>
+    @endif
 </div>
 @endsection

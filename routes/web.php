@@ -14,6 +14,7 @@
 Route::get('/', "CharacterController@index")->name('index');
 Route::get('/character', "CharacterController@create")->name('createCharacter');
 Route::post('/character', "CharacterController@store");
+Route::get('/character/{id}', "CharacterController@show");
 
 Route::get('/debug', function () {
 
