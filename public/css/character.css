@@ -10,11 +10,11 @@
 }
 
 #characterImg {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
 }
 
-#characterImg img {
+img#characterImg {
 	border: 4px outset #b5ab6e;
 	/* Background pattern from Subtle Patterns http://www.subtlepatterns.com */
 	background-image: url("/images/green_cup.png");

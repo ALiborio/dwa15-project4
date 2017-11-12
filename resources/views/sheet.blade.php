@@ -16,6 +16,7 @@ Character Sheet
         </h3>
     @else
     <div class="portrait">
+        <img src="{{ asset('/images/defaultChar.png') }}" width="225" alt="{{ $character->name }}" id="characterImg">
     </div>
     <div class="character">
         <h1 id="charName">
