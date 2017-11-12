@@ -5,26 +5,26 @@
         @yield('title', 'GameMaster')
     </title>
     <!-- ****** faviconit.com favicons ****** -->
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('icons/favicon.ico') }}">
-    <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('icons/favicon-192.png') }}">
-    <link rel="icon" type="image/png" sizes="160x160" href="{{ asset('icons/favicon-160.png') }}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('icons/favicon-96.png') }}">
-    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('icons/favicon-64.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icons/favicon-32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon-16.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('icons/favicon-57.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('icons/favicon-114.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('icons/favicon-72.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('icons/favicon-144.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('icons/favicon-60.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('icons/favicon-120.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('icons/favicon-76.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('icons/favicon-152.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icons/favicon-180.png') }}">
+    <link rel="shortcut icon" href="{{ asset('/images/icons/favicon.ico') }}">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('/images/icons/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('/images/icons/favicon-192.png') }}">
+    <link rel="icon" type="image/png" sizes="160x160" href="{{ asset('/images/icons/favicon-160.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('/images/icons/favicon-96.png') }}">
+    <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('/images/icons/favicon-64.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/icons/favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/icons/favicon-16.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/images/icons/favicon-57.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/images/icons/favicon-114.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/icons/favicon-72.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/images/icons/favicon-144.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/images/icons/favicon-60.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/images/icons/favicon-120.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/images/icons/favicon-76.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/images/icons/favicon-152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/icons/favicon-180.png') }}">
     <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="{{ asset('icons/favicon-144.png') }}">
-    <meta name="msapplication-config" content="{{ asset('icons/browserconfig.xml') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('/images/icons/favicon-144.png') }}">
+    <meta name="msapplication-config" content="{{ asset('/images/icons/browserconfig.xml') }}">
     <!-- ****** faviconit.com favicons ****** -->
 
     <meta charset='utf-8'>
