@@ -7,11 +7,18 @@
 @section('content')
 <div class="container">
     <div class="results">
-        @foreach ($results as $character)
-            <div class="result-item">
-                {{ $character->name.' - Level '.$character->level }}
-            </div>
-        @endforeach
+        @if ($results->isEmpty())
+            <p>
+                There are no characters.
+            </p>
+        @else
+            @foreach ($results as $character)
+                <div class="result-item">
+                    {{ $character->name.' - Level '.$character->level }}
+                    <a href="/character/{{ $character->id }}"> View </a>
+                </div>
+            @endforeach
+        @endif
     </div>
 </div>
 @endsection
