@@ -28,7 +28,11 @@ class CharacterController extends Controller
     public function create()
     {
         $classList = Profession::all();
-        return view('form')->with(['classList' => $classList]);
+        $raceList = Race::all();
+        return view('form')->with([
+            'classList' => $classList,
+            'raceList' => $raceList
+        ]);
     }
 
     /**

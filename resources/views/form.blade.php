@@ -67,15 +67,11 @@
             <label for="race">Race</label>
             <select id="race" name="race">
                 <option value="">-- pick a race --</option>
-                <option value="human" @if (old('race') == 'human') selected @endif>
-                    Human
-                </option>
-                <option value="elf" @if (old('race') == 'elf') selected @endif>
-                    Elf
-                </option>
-                <option value="dwarf" @if (old('race') == 'dwarf') selected @endif>
-                    Dwarf
-                </option>
+                @foreach($raceList as $race)
+                    <option value="{{ $race->id }}" @if (old('race') == $race->id) selected @endif>
+                        {{ ucfirst($race->name) }}
+                    </option>
+                @endforeach
             </select>
         </div>
         @if($errors->get('race'))
