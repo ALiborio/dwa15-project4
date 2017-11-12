@@ -50,8 +50,8 @@
             <select id="class" name="class">
                 <option value="">-- pick a class --</option>
                 @foreach($classList as $class)
-                    <option value="{{ $class }}" @if (old('class') == $class) selected @endif>
-                        {{ ucfirst($class) }}
+                    <option value="{{ $class->id }}" @if (old('class') == $class->id) selected @endif>
+                        {{ ucfirst($class->name) }}
                     </option>
                 @endforeach
             </select>

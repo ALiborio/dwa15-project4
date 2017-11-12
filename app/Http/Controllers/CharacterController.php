@@ -4,6 +4,8 @@ namespace GameMaster\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GameMaster\Character;
+use GameMaster\Profession;
+use GameMaster\Race;
 
 class CharacterController extends Controller
 {
@@ -25,18 +27,8 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        return view('form')->with(['classList' => [
-            'barbarian',
-            'bard',
-            'druid',
-            'mage',
-            'necromancer',
-            'paladin',
-            'priest',
-            'ranger',
-            'rogue',
-            'warrior'
-        ]]);
+        $classList = Profession::all();
+        return view('form')->with(['classList' => $classList]);
     }
 
     /**
