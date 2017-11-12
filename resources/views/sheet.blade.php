@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Character Sheet
+GameMaster - Character Sheet
 @endsection
 
 @push('head')
