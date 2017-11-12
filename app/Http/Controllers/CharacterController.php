@@ -61,8 +61,8 @@ class CharacterController extends Controller
         $character = new Character();
         $character->name = $request->input('name');
         $character->gender = $request->input('gender');
-        #$character->race = $request->input('race');
-        #$character->class = $request->input('class');
+        $character->race_id = $request->input('race');
+        $character->class_id = $request->input('class');
         if ($request->input('lawchaos') == 'neutral' && $request->input('goodevil') == 'neutral') {
             $character->alignment = 'true neutral';
         } elseif ($request->has('lawchaos') && $request->has('goodevil')) {
@@ -72,6 +72,11 @@ class CharacterController extends Controller
         } elseif ($request->has('goodevil')) {
             $character->alignment = $request->input('goodevil');
         }
+        if ($request->input('background') !== 'Enter some background about your character...') {
+            $character->background = $request->input('background');
+        }
+        
+        $character->image = $request->input('image');
         #start with a blank character, level 1 - all stats at 0.
         $character->level = 1;
         $character->strength = 0;
@@ -100,7 +105,13 @@ class CharacterController extends Controller
             return view('search')->with(['results' => $results]);
         } else {
             $result = Character::find($id);
-            return view('sheet')->with(['character' => $result]);
+            $race = Race::find($result->race_id);
+            $class = Profession::find($result->class_id);
+            return view('sheet')->with([
+                'character' => $result,
+                'race' => $race,
+                'class' => $class
+        ]);
         }
     }
 

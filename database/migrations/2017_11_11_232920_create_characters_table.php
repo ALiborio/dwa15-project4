@@ -18,8 +18,11 @@ class CreateCharactersTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->enum('gender', ['male','female'])->nullable();
+            $table->integer('class_id')->unsigned();
+            $table->integer('race_id')->unsigned();
             $table->string('alignment')->nullable();
             $table->text('background')->nullable();
+            $table->binary('image')->nullable();
             $table->integer('level');
             $table->integer('strength');
             $table->integer('dexterity');
@@ -27,6 +30,8 @@ class CreateCharactersTable extends Migration
             $table->integer('intelligence');
             $table->integer('wisdom');
             $table->integer('charisma');
+            $table->foreign('class_id')->references('id')->on('professions');
+            $table->foreign('race_id')->references('id')->on('races');
         });
     }
 

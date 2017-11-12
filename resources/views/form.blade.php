@@ -81,6 +81,9 @@
                 @endforeach
             </div>
         @endif
+        <h3>Background</h3>
+        <textarea name="background"
+   rows="4" cols="50">Enter some background about your character...</textarea>
         <h3 class="alignment">Alignment</h3>
         <div class="alignment-radios">
             <div class="radio-group">

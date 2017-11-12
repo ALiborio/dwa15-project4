@@ -23,13 +23,13 @@ GameMaster - Character Sheet
             {{ $character->name }} 
         </h1>
         <p>
-            {{ $character->race }}
+            {{ $race->name }}
         </p>
         <p>
             {{ $character->gender }}
         </p>
         <p>
-            {{ $character->class }}
+            {{ $class->name }}
         </p>
         <p>
             {{ $character->alignment }}
