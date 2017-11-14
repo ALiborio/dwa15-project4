@@ -40,9 +40,9 @@
             <a href="{{ route('index') }}"><img src="{{ asset('images/d20.png') }}"> GameMaster</a>
         </span>
         <span class="nav-link @if(Route::currentRouteName() =='createCharacter') {{ 'nav-selected' }} @endif">
-            <a href="/character">New</a>
+            <a href="{{ route('createCharacter') }}">New</a>
         </span>
-        <span class="nav-link @if(Route::currentRouteName() =='showCharacter') {{ 'nav-selected' }} @endif">
+        <span class="nav-link @if(Route::currentRouteName() =='showCharacter' or Route::currentRouteName() == 'editCharacter') {{ 'nav-selected' }} @endif">
             <a href="/character/all">Characters</a>
         </span>
 
