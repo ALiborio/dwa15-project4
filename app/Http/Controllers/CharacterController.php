@@ -225,7 +225,6 @@ class CharacterController extends Controller
         }
         
         $character->image = $request->input('image');
-        #start with a blank character, level 1 - all stats at 0.
         /*
         For now, no updates to levels/stats
         $character->level = 1;
