@@ -1,40 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use GameMaster\ExtendedBlueprint;
 use Illuminate\Database\Migrations\Migration;
-
-class ExtendedBlueprint extends Blueprint {
-
-    /**
-     * Create a new set column on the table.
-     *
-     * @param  string  $column
-     * @param  array   $allowed
-     * @return \Illuminate\Support\Fluent
-     */
-    public function set($column, array $allowed)
-    {
-        return $this->addColumn('set', $column, compact('allowed'));
-    }
-
-}
-
-
-class ExtendedMySqlGrammar extends Illuminate\Database\Schema\Grammars\MySqlGrammar {
-
-    /**
-     * Create the column definition for a set type.
-     *
-     * @param  \Illuminate\Support\Fluent  $column
-     * @return string
-     */
-    protected function typeSet(\Illuminate\Support\Fluent $column)
-    {
-        return "set('".implode("', '", $column->allowed)."')";
-    }
-
-}
+use GameMaster\ExtendedMySqlGrammar;
 
 class CreateRacesTable extends Migration
 {
