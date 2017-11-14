@@ -93,7 +93,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Search for matching resources
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
