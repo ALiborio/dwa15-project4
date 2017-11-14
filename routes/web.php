@@ -12,11 +12,17 @@
 */
 
 Route::get('/', "CharacterController@index")->name('index');
+# Create/Store
 Route::get('/character', "CharacterController@create")->name('createCharacter');
 Route::post('/character', "CharacterController@store");
+# Search/Show
 Route::get('/character/search', "CharacterController@search")->name('searchCharacter');
 Route::get('/character/{id}', "CharacterController@show")->name('showCharacter');
+# Edit/Update
+Route::get('/character/edit/{id}', "CharacterController@edit")->name('editCharacter');
+Route::post('/character/edit/{id}', "CharacterController@update");
 
+#Database Debug function
 Route::get('/debug', function () {
 
     $debug = [

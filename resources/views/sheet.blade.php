@@ -64,6 +64,8 @@ GameMaster - Character Sheet
             <span class="attribute-num">{{ $character->charisma }}</span>
         </h3>
     </div>
+    <hr>
+    <a href="/character/edit/{{ $character->id }}">Edit</a>
     @endif
 </div>
 @endsection
