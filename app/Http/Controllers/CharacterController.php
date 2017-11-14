@@ -60,10 +60,18 @@ class CharacterController extends Controller
         $this->validate($request, $this->rules, $this->messages);
         # validation passed, generate new character
         $character = new Character();
-        $character->name = $request->input('name');
+
+        if ($request->input('name') == '') {
+            $generator = new \Nubs\RandomNameGenerator\Alliteration();
+            $character->name = $generator->getName();
+        } else {
+            $character->name = $request->input('name');
+        }
+        
         $character->gender = $request->input('gender');
         $character->race_id = $request->input('race');
         $character->class_id = $request->input('class');
+
         if ($request->input('lawchaos') == 'neutral' && $request->input('goodevil') == 'neutral') {
             $character->alignment = 'true neutral';
         } elseif ($request->has('lawchaos') && $request->has('goodevil')) {
@@ -73,11 +81,13 @@ class CharacterController extends Controller
         } elseif ($request->has('goodevil')) {
             $character->alignment = $request->input('goodevil');
         }
+
         if ($request->input('background') !== 'Enter some background about your character...') {
             $character->background = $request->input('background');
         }
         
         $character->image = $request->input('image');
+        
         #start with a blank character, level 1 - all stats at 0.
         $character->level = 1;
         $character->strength = 0;
