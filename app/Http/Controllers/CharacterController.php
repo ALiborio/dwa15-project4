@@ -183,29 +183,34 @@ class CharacterController extends Controller
     public function edit($id)
     {
         $character = Character::find($id);
-        $classList = Profession::all();
-        $raceList = Race::all();
-        if($character->alignment == 'true neutral') {
-            $alignment = [
-                'lawchaos' => 'neutral',
-                'goodevil' => 'neutral'
-            ];
-        } elseif ($character->alignment == null) {
-            $alignment = [
-                'lawchaos' => '',
-                'goodevil' => ''
-            ];
+        if ($character == null) {
+            return view('sheet')->with(['character' => $character]);
         } else {
-            $alignment = array_combine(['lawchaos','goodevil'], 
-                explode(' ', $character->alignment));
-        }
+            $classList = Profession::all();
+            $raceList = Race::all();
+            if($character->alignment == 'true neutral') {
+                $alignment = [
+                    'lawchaos' => 'neutral',
+                    'goodevil' => 'neutral'
+                ];
+            } elseif ($character->alignment == null) {
+                $alignment = [
+                    'lawchaos' => '',
+                    'goodevil' => ''
+                ];
+            } else {
+                $alignment = array_combine(['lawchaos','goodevil'], 
+                    explode(' ', $character->alignment));
+            }
 
-        return view('form')->with([
-            'character' => $character,
-            'alignment' => $alignment,
-            'classList' => $classList,
-            'raceList' => $raceList
-        ]);
+            return view('form')->with([
+                'character' => $character,
+                'alignment' => $alignment,
+                'classList' => $classList,
+                'raceList' => $raceList
+            ]);
+        }
+        
     }
 
     /**
