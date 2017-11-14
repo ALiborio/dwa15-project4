@@ -87,7 +87,7 @@ class CharacterController extends Controller
         }
         
         $character->image = $request->input('image');
-        
+
         #start with a blank character, level 1 - all stats at 0.
         $character->level = 1;
         $character->strength = 0;
@@ -160,13 +160,17 @@ class CharacterController extends Controller
             ]);
         } else {
             $result = Character::find($id);
-            $race = Race::find($result->race_id);
-            $class = Profession::find($result->class_id);
-            return view('sheet')->with([
-                'character' => $result,
-                'race' => $race,
-                'class' => $class
-        ]);
+            if ($result == null) {
+                return view('sheet')->with(['character' => $result]);
+            } else {
+                $race = Race::find($result->race_id);
+                $class = Profession::find($result->class_id);
+                return view('sheet')->with([
+                    'character' => $result,
+                    'race' => $race,
+                    'class' => $class
+                ]);
+            }
         }
     }
 
