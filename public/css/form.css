@@ -39,8 +39,17 @@
 	border-radius: 2px;
 }
 
+.search {
+  font-family: 'Spectral SC', serif;
+  margin-left: 20px;
+}
+
 #name {
 	width: 60%;
+}
+
+#search-lvl {
+  width: 40px;
 }
 
 label {

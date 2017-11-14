@@ -93,6 +93,44 @@ class CharacterController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        # Initiate a query using the `select` method with no params
+        # This will will get all the fields from the rows that match our query
+        $query = Character::select();
+
+        # Build on the query
+        foreach ($request->all() as $field => $term) {
+            if ($term != null) {
+                if($field == 'race_id' or $field == 'class_id') {
+                    $query->where($field, '=', $term);
+                } elseif ($field == 'level') {
+                    $query->where($field, '>=', $term);
+                } else {
+                    $query->where($field, 'LIKE', '%'.$term.'%');
+                }
+            }
+            
+        }
+
+        # Execute the query
+        $results = $query->get();
+
+        $classList = Profession::all();
+        $raceList = Race::all();
+        return view('search')->with([
+                'results' => $results,
+                'classList' => $classList,
+                'raceList' => $raceList
+            ]);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -102,7 +140,13 @@ class CharacterController extends Controller
     {
         if ($id == 'all') {
             $results = Character::all();
-            return view('search')->with(['results' => $results]);
+            $classList = Profession::all();
+            $raceList = Race::all();
+            return view('search')->with([
+                'results' => $results,
+                'classList' => $classList,
+                'raceList' => $raceList
+            ]);
         } else {
             $result = Character::find($id);
             $race = Race::find($result->race_id);
