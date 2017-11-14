@@ -239,7 +239,7 @@ class CharacterController extends Controller
         # save it in the database
         $character->save();
 
-        return redirect('/character/edit/'.$id);
+        return redirect('/character/'.$id);
     }
 
     /**
