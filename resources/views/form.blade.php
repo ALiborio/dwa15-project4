@@ -14,7 +14,10 @@
             Create Your Character
         @endif
     </h1>
-    <form action="{{ isset($character) ? '/character/edit/'.$character->id : '/character' }}" method="POST">
+    <form action="/character{{ isset($character) ? '/'.$character->id : '' }}" method="POST">
+        @if(isset($character))
+            {{ method_field('put') }}
+        @endif
         {{ csrf_field() }}
         <div class="form-row">
             <label for="name">Name</label>

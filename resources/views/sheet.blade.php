@@ -65,7 +65,7 @@ GameMaster - Character Sheet
         </h3>
     </div>
     <hr>
-    <a href="/character/edit/{{ $character->id }}">Edit</a>
+    <a href="/character/{{ $character->id }}/edit">Edit</a>
     @endif
 </div>
 @endsection

@@ -19,8 +19,8 @@ Route::post('/character', "CharacterController@store");
 Route::get('/character/search', "CharacterController@search")->name('searchCharacter');
 Route::get('/character/{id}', "CharacterController@show")->name('showCharacter');
 # Edit/Update
-Route::get('/character/edit/{id}', "CharacterController@edit")->name('editCharacter');
-Route::post('/character/edit/{id}', "CharacterController@update");
+Route::get('/character/{id}/edit', "CharacterController@edit")->name('editCharacter');
+Route::put('/character/{id}', "CharacterController@update");
 
 #Database Debug function
 Route::get('/debug', function () {
