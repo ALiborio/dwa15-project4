@@ -9,63 +9,65 @@ GameMaster - Character Sheet
 @endpush
 
 @section('content')
+
 <div class="container">
     @if ($character == null)
         <h3>
             Character not found.
         </h3>
     @else
-    <div class="portrait">
-        <img src="{{ asset('/images/defaultChar.png') }}" width="225" alt="{{ $character->name }}" id="characterImg">
-    </div>
-    <div class="character">
-        <h1 id="charName">
-            {{ $character->name }} 
-        </h1>
-        <p>
-            {{ $race->name }}
-        </p>
-        <p>
-            {{ $character->gender }}
-        </p>
-        <p>
-            {{ $class->name }}
-        </p>
-        <p>
-            {{ $character->alignment }}
-        </p>
-    </div>
+        <div class="portrait">
+            <img src="{{ asset('/images/defaultChar.png') }}" width="225" alt="{{ $character->name }}" id="characterImg">
+        </div>
+        <div class="character">
+            <h1 id="charName">
+                {{ $character->name }} 
+            </h1>
+            <p>
+                {{ $race->name }}
+            </p>
+            <p>
+                {{ $character->gender }}
+            </p>
+            <p>
+                {{ $class->name }}
+            </p>
+            <p>
+                {{ $character->alignment }}
+            </p>
+        </div>
 
-    <h3> {{ 'Level '.$character->level }} </h3>
-    <hr>
-    <div class="stats">
-        <h3>
-            <span class="attribute-name">Strength</span>
-            <span class="attribute-num">{{ $character->strength }}</span>
-        </h3>
-        <h3>
-            <span class="attribute-name">Dexterity</span>
-            <span class="attribute-num">{{ $character->dexterity }}</span>
-        </h3>
-        <h3>
-            <span class="attribute-name">Constitution</span>
-            <span class="attribute-num">{{ $character->constitution }}</span>
-        </h3>
-        <h3>
-            <span class="attribute-name">Intelligence</span>
-            <span class="attribute-num">{{ $character->intelligence }}</span>
-        </h3>
-        <h3>
-            <span class="attribute-name">Wisdom</span>
-            <span class="attribute-num">{{ $character->wisdom }}</span>
-        </h3>
-        <h3>
-            <span class="attribute-name">Charisma</span>
-            <span class="attribute-num">{{ $character->charisma }}</span>
-        </h3>
-    </div>
-    <hr>
-    <a href="/character/{{ $character->id }}/edit">Edit</a>
+        <h3> {{ 'Level '.$character->level }} </h3>
+        <hr>
+        <div class="stats">
+            <h3>
+                <span class="attribute-name">Strength</span>
+                <span class="attribute-num">{{ $character->strength }}</span>
+            </h3>
+            <h3>
+                <span class="attribute-name">Dexterity</span>
+                <span class="attribute-num">{{ $character->dexterity }}</span>
+            </h3>
+            <h3>
+                <span class="attribute-name">Constitution</span>
+                <span class="attribute-num">{{ $character->constitution }}</span>
+            </h3>
+            <h3>
+                <span class="attribute-name">Intelligence</span>
+                <span class="attribute-num">{{ $character->intelligence }}</span>
+            </h3>
+            <h3>
+                <span class="attribute-name">Wisdom</span>
+                <span class="attribute-num">{{ $character->wisdom }}</span>
+            </h3>
+            <h3>
+                <span class="attribute-name">Charisma</span>
+                <span class="attribute-num">{{ $character->charisma }}</span>
+            </h3>
+        </div>
+        <hr>
+        <a href="/character/{{ $character->id }}/edit">Edit</a>
     @endif
 </div>
+
 @endsection

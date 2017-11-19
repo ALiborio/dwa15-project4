@@ -268,6 +268,11 @@ class CharacterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $character = Character::find($id);
+        if ($character == null) {
+            return view('sheet')->with(['character' => $character]);
+        } else {
+            $character->delete();
+        }
     }
 }

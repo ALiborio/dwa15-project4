@@ -145,5 +145,14 @@
         class="submit">
         </div>
     </form>
+    @if (isset($character))
+        <form action="/character/{{ $character->id }}" method="POST">
+            {{ method_field('delete') }}
+            {{ csrf_field() }}
+            <div class="form-row submit">
+                <input type="submit" value="Delete Character" class="submit">
+            </div>
+        </form>
+    @endif
 </div>
 @endsection
