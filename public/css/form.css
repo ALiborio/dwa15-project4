@@ -39,6 +39,10 @@
 	border-radius: 2px;
 }
 
+.delete {
+  width: 150px;
+}
+
 .search {
   font-family: 'Spectral SC', serif;
   margin-left: 20px;

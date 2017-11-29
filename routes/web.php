@@ -22,6 +22,7 @@ Route::get('/character/{id}', "CharacterController@show")->name('showCharacter')
 Route::get('/character/{id}/edit', "CharacterController@edit")->name('editCharacter');
 Route::put('/character/{id}', "CharacterController@update");
 # Delete
+Route::get('/character/{id}/delete', "CharacterController@delete");
 Route::delete('/character/{id}', "CharacterController@destroy");
 
 #Database Debug function

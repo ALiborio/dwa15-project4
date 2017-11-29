@@ -188,6 +188,8 @@ class CharacterController extends Controller
         } else {
             $classList = Profession::all();
             $raceList = Race::all();
+            // consider changing this to store them separately
+            // so we don't have to do this ridiculous separating during editing...
             if($character->alignment == 'true neutral') {
                 $alignment = [
                     'lawchaos' => 'neutral',
@@ -261,6 +263,24 @@ class CharacterController extends Controller
     }
 
     /**
+     * Show the confirmation for deleting the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $result = Character::find($id);
+        $race = Race::find($result->race_id);
+        $class = Profession::find($result->class_id);
+        return view('delete')->with([
+            'character' => $result,
+            'race' => $race,
+            'class' => $class
+        ]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -270,6 +290,7 @@ class CharacterController extends Controller
     {
         $character = Character::find($id);
         if ($character == null) {
+            // This will display the character not found default message.
             return view('sheet')->with(['character' => $character]);
         } else {
             $character->delete();
