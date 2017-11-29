@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-GameMaster - Character Sheet
+GameMaster - Delete Character
 @endsection
 
 @push('head')
@@ -37,37 +37,11 @@ GameMaster - Character Sheet
             <p>
                 {{ $character->alignment }}
             </p>
+            <p>
+                {{ 'Level '.$character->level }}
+            </p>
         </div>
 
-        <h3> {{ 'Level '.$character->level }} </h3>
-        <hr>
-        <div class="stats">
-            <h3>
-                <span class="attribute-name">Strength</span>
-                <span class="attribute-num">{{ $character->strength }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Dexterity</span>
-                <span class="attribute-num">{{ $character->dexterity }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Constitution</span>
-                <span class="attribute-num">{{ $character->constitution }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Intelligence</span>
-                <span class="attribute-num">{{ $character->intelligence }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Wisdom</span>
-                <span class="attribute-num">{{ $character->wisdom }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Charisma</span>
-                <span class="attribute-num">{{ $character->charisma }}</span>
-            </h3>
-        </div>
-        <hr>
         <form action="/character/{{ $character->id }}" method="POST">
             {{ method_field('delete') }}
             {{ csrf_field() }}
