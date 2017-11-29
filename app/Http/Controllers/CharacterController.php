@@ -100,7 +100,7 @@ class CharacterController extends Controller
         # save it in the database
         $character->save();
 
-        return redirect('/character');
+        return redirect('/character')->with('alert', 'Character '.$character->name.' was added.');
     }
 
     /**
@@ -257,7 +257,7 @@ class CharacterController extends Controller
         # save it in the database
         $character->save();
 
-        return redirect('/character/'.$id);
+        return redirect('/character/'.$id)->with('alert', 'Character '.$character->name.' was updated.');
     }
 
     /**
@@ -273,6 +273,7 @@ class CharacterController extends Controller
             return view('sheet')->with(['character' => $character]);
         } else {
             $character->delete();
+            return redirect('/character/all')->with('alert', 'Character '.$character->name.' was deleted.');
         }
     }
 }

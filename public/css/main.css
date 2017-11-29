@@ -1,6 +1,7 @@
 .container {
 	width: fit-content;
 	margin: auto;
+	margin-top: 10px;
 	text-align: center;
 	background-color: #eada9f;
 	padding: 10px 20px;
@@ -46,6 +47,14 @@ h1.game-master {
 	float: right;
 }
 
+.alert {
+	background-color: #efec32;
+	margin: auto;
+	margin-top: 0px;
+	width: 100%;
+	text-align: center;
+}
+
 footer {
 	text-align: center;
 	color: #FFFFFF;
@@ -66,10 +75,10 @@ nav {
 	background-color: #eada9f;
 	border: 2px solid #b5ab6e;
 	margin: 0px;
-	margin-bottom: 10px;
 	font-size: 1.2em;
 	vertical-align: middle;
 	padding: 0px;
+	height: 40px;
 }
 
 nav a {

@@ -54,8 +54,15 @@
             Sign Up
         </span>
     </nav>
-    <header>
 
+    @if(session('alert'))
+        <div class='alert'>
+            <h5 class="no-top-margin">{{ session('alert') }}</h5>
+        </div>
+    @endif
+
+
+    <header>
     </header>
 
     <section>
