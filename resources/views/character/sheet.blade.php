@@ -33,37 +33,19 @@ GameMaster - Character Sheet
                 {{ $class->name }}
             </p>
             <p>
-                {{ $character->alignment }}
+                {{ $character->alignment() }}
             </p>
         </div>
 
         <h3> {{ 'Level '.$character->level }} </h3>
         <hr>
         <div class="stats">
-            <h3>
-                <span class="attribute-name">Strength</span>
-                <span class="attribute-num">{{ $character->strength }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Dexterity</span>
-                <span class="attribute-num">{{ $character->dexterity }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Constitution</span>
-                <span class="attribute-num">{{ $character->constitution }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Intelligence</span>
-                <span class="attribute-num">{{ $character->intelligence }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Wisdom</span>
-                <span class="attribute-num">{{ $character->wisdom }}</span>
-            </h3>
-            <h3>
-                <span class="attribute-name">Charisma</span>
-                <span class="attribute-num">{{ $character->charisma }}</span>
-            </h3>
+            @foreach($character->stats as $stat)
+                <h3>
+                    <span class="attribute-name">{{ $stat->name }}</span>
+                    <span class="attribute-num">{{ $stat->pivot->value }}</span>
+                </h3>
+            @endforeach
         </div>
         <hr>
         <a href="/character/{{ $character->id }}/edit">Edit</a>

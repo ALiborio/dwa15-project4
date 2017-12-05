@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use GameMaster\Character;
 use GameMaster\Profession;
 use GameMaster\Race;
+use GameMaster\Stat;
 
 class CharacterController extends Controller
 {
@@ -30,7 +31,14 @@ class CharacterController extends Controller
     public function index()
     {
         //
-        return view('welcome');
+        $results = Character::all();
+        $classList = Profession::all();
+        $raceList = Race::all();
+        return view('character.search')->with([
+            'results' => $results,
+            'classList' => $classList,
+            'raceList' => $raceList
+        ]);
     }
 
     /**
@@ -71,16 +79,8 @@ class CharacterController extends Controller
         $character->gender = $request->input('gender');
         $character->race_id = $request->input('race');
         $character->class_id = $request->input('class');
-
-        if ($request->input('lawchaos') == 'neutral' && $request->input('goodevil') == 'neutral') {
-            $character->alignment = 'true neutral';
-        } elseif ($request->has('lawchaos') && $request->has('goodevil')) {
-            $character->alignment = $request->input('lawchaos').' '.$request->input('goodevil');
-        } elseif ($request->has('lawchaos')) {
-            $character->alignment = $request->input('lawchaos');
-        } elseif ($request->has('goodevil')) {
-            $character->alignment = $request->input('goodevil');
-        }
+        $character->lawfulness = $request->input('lawchaos');
+        $character->morality = $request->input('goodevil');
 
         if ($request->input('background') !== 'Enter some background about your character...') {
             $character->background = $request->input('background');
@@ -88,19 +88,20 @@ class CharacterController extends Controller
         
         $character->image = $request->input('image');
 
-        #start with a blank character, level 1 - all stats at 0.
-        $character->level = 1;
-        $character->strength = 0;
-        $character->dexterity = 0;
-        $character->constitution = 0;
-        $character->intelligence = 0;
-        $character->wisdom = 0;
-        $character->charisma = 0;
+        #start with a blank character, level 1
+         $character->level = 1;
 
         # save it in the database
         $character->save();
 
-        return redirect('/character')->with('alert', 'Character '.$character->name.' was added.');
+        # randomly generate the stats
+        $stats = Stat::all();
+        foreach ($stats as $stat) {
+                $statList[$stat->id] = ['value' => rand(1,20)];
+            }
+        $character->stats()->sync($statList);
+
+        return redirect('/character/')->with('alert', 'Character '.$character->name.' was added.');
     }
 
     /**
@@ -188,26 +189,9 @@ class CharacterController extends Controller
         } else {
             $classList = Profession::all();
             $raceList = Race::all();
-            // consider changing this to store them separately
-            // so we don't have to do this ridiculous separating during editing...
-            if($character->alignment == 'true neutral') {
-                $alignment = [
-                    'lawchaos' => 'neutral',
-                    'goodevil' => 'neutral'
-                ];
-            } elseif ($character->alignment == null) {
-                $alignment = [
-                    'lawchaos' => '',
-                    'goodevil' => ''
-                ];
-            } else {
-                $alignment = array_combine(['lawchaos','goodevil'], 
-                    explode(' ', $character->alignment));
-            }
 
             return view('character.form')->with([
                 'character' => $character,
-                'alignment' => $alignment,
                 'classList' => $classList,
                 'raceList' => $raceList
             ]);
@@ -232,15 +216,9 @@ class CharacterController extends Controller
         $character->gender = $request->input('gender');
         $character->race_id = $request->input('race');
         $character->class_id = $request->input('class');
-        if ($request->input('lawchaos') == 'neutral' && $request->input('goodevil') == 'neutral') {
-            $character->alignment = 'true neutral';
-        } elseif ($request->has('lawchaos') && $request->has('goodevil')) {
-            $character->alignment = $request->input('lawchaos').' '.$request->input('goodevil');
-        } elseif ($request->has('lawchaos')) {
-            $character->alignment = $request->input('lawchaos');
-        } elseif ($request->has('goodevil')) {
-            $character->alignment = $request->input('goodevil');
-        }
+        $character->lawfulness = $request->input('lawchaos');
+        $character->morality = $request->input('goodevil');
+
         if ($request->input('background') !== 'Enter some background about your character...') {
             $character->background = $request->input('background');
         }
@@ -293,6 +271,7 @@ class CharacterController extends Controller
             // This will display the character not found default message.
             return view('character.sheet')->with(['character' => $character]);
         } else {
+            $character->stats()->detach();
             $character->delete();
             return redirect('/character/all')->with('alert', 'Character '.$character->name.' was deleted.');
         }

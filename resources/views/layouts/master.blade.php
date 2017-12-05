@@ -37,7 +37,7 @@
 <body>
     <nav>
         <span class="nav-home @if(Route::currentRouteName() =='index') {{ 'nav-selected' }} @endif game-master">
-            <a href="{{ route('index') }}"><img src="{{ asset('images/d20.png') }}"> GameMaster</a>
+            <a href="{{ route('home') }}"><img src="{{ asset('images/d20.png') }}"> GameMaster</a>
         </span>
         <span class="nav-link @if(Route::currentRouteName() =='createCharacter') {{ 'nav-selected' }} @endif">
             <a href="{{ route('createCharacter') }}">New</a>

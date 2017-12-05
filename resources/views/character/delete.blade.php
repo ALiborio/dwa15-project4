@@ -35,7 +35,7 @@ GameMaster - Delete Character
                 {{ $class->name }}
             </p>
             <p>
-                {{ $character->alignment }}
+                {{ $character->alignment() }}
             </p>
             <p>
                 {{ 'Level '.$character->level }}

@@ -11,18 +11,21 @@
 |
 */
 
-Route::get('/', "CharacterController@index")->name('index');
+Route::get('/', function() {
+    return view('welcome');
+})->name('home');
 # Create/Store
-Route::get('/character', "CharacterController@create")->name('createCharacter');
+Route::get('/character/new', "CharacterController@create")->name('createCharacter');
 Route::post('/character', "CharacterController@store");
 # Search/Show
+Route::get('/character/', "CharacterController@index")->name('indexCharacter');
 Route::get('/character/search', "CharacterController@search")->name('searchCharacter');
 Route::get('/character/{id}', "CharacterController@show")->name('showCharacter');
 # Edit/Update
 Route::get('/character/{id}/edit', "CharacterController@edit")->name('editCharacter');
 Route::put('/character/{id}', "CharacterController@update");
 # Delete
-Route::get('/character/{id}/delete', "CharacterController@delete");
+Route::get('/character/{id}/delete', "CharacterController@delete")->name('deleteCharacter');
 Route::delete('/character/{id}', "CharacterController@destroy");
 
 #Database Debug function

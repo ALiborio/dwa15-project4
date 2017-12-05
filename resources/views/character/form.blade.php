@@ -98,15 +98,15 @@
         <div class="alignment-radios">
             <div class="radio-group">
                 <label class="radio-label">
-                    <input name="lawchaos" type="radio" id="lawful" value="lawful" {{ (old('lawchaos', $alignment['lawchaos'] ?? '') == 'lawful') ? 'CHECKED' : '' }}>
+                    <input name="lawchaos" type="radio" id="lawful" value="lawful" {{ (old('lawchaos', $character->lawfulness ?? '') == 'lawful') ? 'CHECKED' : '' }}>
                     <span class="inner-label">Lawful</span>
                 </label>
                 <label class="radio-label">
-                    <input name="lawchaos" type="radio" id="lcneutral" value="neutral" {{ (old('lawchaos', $alignment['lawchaos'] ?? '') == 'neutral') ? 'CHECKED' : '' }}>
+                    <input name="lawchaos" type="radio" id="lcneutral" value="neutral" {{ (old('lawchaos', $character->lawfulness ?? '') == 'neutral') ? 'CHECKED' : '' }}>
                     <span class="inner-label">Neutral</span>
                 </label>
                 <label class="radio-label">
-                    <input name="lawchaos" type="radio" id="chaotic" value="chaotic" {{ (old('lawchaos', $alignment['lawchaos'] ?? '') == 'chaotic') ? 'CHECKED' : '' }}>
+                    <input name="lawchaos" type="radio" id="chaotic" value="chaotic" {{ (old('lawchaos', $character->lawfulness ?? '') == 'chaotic') ? 'CHECKED' : '' }}>
                     <span class="inner-label">Chaotic</span>
                 </label>
             </div>
@@ -119,15 +119,15 @@
             @endif
             <div class="radio-group">
                 <label class="radio-label">
-                    <input name="goodevil" type="radio" id="good" value="good" {{ (old('goodevil', $alignment['goodevil'] ?? '') == 'good') ? 'CHECKED' : '' }}>
+                    <input name="goodevil" type="radio" id="good" value="good" {{ (old('goodevil', $character->morality ?? '') == 'good') ? 'CHECKED' : '' }}>
                     <span class="inner-label">Good&nbsp;&nbsp;&nbsp;</span>
                 </label>
                 <label class="radio-label">
-                    <input name="goodevil" type="radio" id="geneutral" value="neutral" {{ (old('goodevil', $alignment['goodevil'] ?? '') == 'neutral') ? 'CHECKED' : '' }}>
+                    <input name="goodevil" type="radio" id="geneutral" value="neutral" {{ (old('goodevil', $character->morality ?? '') == 'neutral') ? 'CHECKED' : '' }}>
                     <span class="inner-label">Neutral</span>
                 </label>
                 <label class="radio-label">
-                    <input name="goodevil" type="radio" id="evil" value="evil" {{ (old('goodevil', $alignment['goodevil'] ?? '') == 'evil') ? 'CHECKED' : '' }}>
+                    <input name="goodevil" type="radio" id="evil" value="evil" {{ (old('goodevil', $character->morality ?? '') == 'evil') ? 'CHECKED' : '' }}>
                     <span class="inner-label">Evil</span>
                 </label>
             </div>
