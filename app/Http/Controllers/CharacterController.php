@@ -42,7 +42,7 @@ class CharacterController extends Controller
     {
         $classList = Profession::all();
         $raceList = Race::all();
-        return view('form')->with([
+        return view('character.form')->with([
             'classList' => $classList,
             'raceList' => $raceList
         ]);
@@ -134,7 +134,7 @@ class CharacterController extends Controller
 
         $classList = Profession::all();
         $raceList = Race::all();
-        return view('search')->with([
+        return view('character.search')->with([
                 'results' => $results,
                 'classList' => $classList,
                 'raceList' => $raceList
@@ -153,7 +153,7 @@ class CharacterController extends Controller
             $results = Character::all();
             $classList = Profession::all();
             $raceList = Race::all();
-            return view('search')->with([
+            return view('character.search')->with([
                 'results' => $results,
                 'classList' => $classList,
                 'raceList' => $raceList
@@ -161,11 +161,11 @@ class CharacterController extends Controller
         } else {
             $result = Character::find($id);
             if ($result == null) {
-                return view('sheet')->with(['character' => $result]);
+                return view('character.sheet')->with(['character' => $result]);
             } else {
                 $race = Race::find($result->race_id);
                 $class = Profession::find($result->class_id);
-                return view('sheet')->with([
+                return view('character.sheet')->with([
                     'character' => $result,
                     'race' => $race,
                     'class' => $class
@@ -184,7 +184,7 @@ class CharacterController extends Controller
     {
         $character = Character::find($id);
         if ($character == null) {
-            return view('sheet')->with(['character' => $character]);
+            return view('character.sheet')->with(['character' => $character]);
         } else {
             $classList = Profession::all();
             $raceList = Race::all();
@@ -205,7 +205,7 @@ class CharacterController extends Controller
                     explode(' ', $character->alignment));
             }
 
-            return view('form')->with([
+            return view('character.form')->with([
                 'character' => $character,
                 'alignment' => $alignment,
                 'classList' => $classList,
@@ -273,7 +273,7 @@ class CharacterController extends Controller
         $result = Character::find($id);
         $race = Race::find($result->race_id);
         $class = Profession::find($result->class_id);
-        return view('delete')->with([
+        return view('character.delete')->with([
             'character' => $result,
             'race' => $race,
             'class' => $class
@@ -291,7 +291,7 @@ class CharacterController extends Controller
         $character = Character::find($id);
         if ($character == null) {
             // This will display the character not found default message.
-            return view('sheet')->with(['character' => $character]);
+            return view('character.sheet')->with(['character' => $character]);
         } else {
             $character->delete();
             return redirect('/character/all')->with('alert', 'Character '.$character->name.' was deleted.');
