@@ -23,7 +23,7 @@
             </div>
             <div class="form-row">
                 <label for="class">Class</label>
-                <select id="class" name="class_id">
+                <select id="class" name="profession_id">
                     <option value="">Any</option>
                     @foreach($classList as $class)
                         <option value="{{ $class->id }}" @if (old('class') == $class->id) selected @endif>
@@ -46,8 +46,21 @@
         @else
             @foreach ($results as $character)
                 <div class="result-item">
-                    {{ $character->name.' - Level '.$character->level }}
-                    <a href="/character/{{ $character->id }}"> View </a>
+                    <div>
+                        {{ $character->name }}
+                         - Level 
+                        {{ $character->level }} 
+                         -
+                        {{ $character->race['name'] }}
+                        {{ $character->profession['name'] }}
+                    </div>
+                    <div>
+                        <a href="/character/{{ $character->id }}">View</a> 
+                         |
+                        <a href="/character/{{ $character->id }}/edit">Edit</a> 
+                         |
+                        <a href="/character/{{ $character->id }}/delete">Delete</a>
+                    </div>
                 </div>
             @endforeach
         @endif

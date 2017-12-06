@@ -50,7 +50,7 @@ class CharactersTableSeeder extends Seeder
                 'name' => $generator->getName(),
                 'gender' => $gender,
                 'race_id' => rand(1,3),
-                'class_id' => rand(1,10),
+                'profession_id' => rand(1,10),
                 'level' => 1,
                 'lawfulness' => $lawfulness,
                 'morality' => $morality

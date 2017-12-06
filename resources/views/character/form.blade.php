@@ -59,7 +59,7 @@
             <select id="class" name="class">
                 <option value="">-- pick a class --</option>
                 @foreach($classList as $class)
-                    <option value="{{ $class->id }}" {{ (old('class', $character->class_id ?? '') == $class->id) ? 'selected' : '' }}>
+                    <option value="{{ $class->id }}" {{ (old('class', $character->profession_id ?? '') == $class->id) ? 'selected' : '' }}>
                         {{ ucfirst($class->name) }}
                     </option>
                 @endforeach

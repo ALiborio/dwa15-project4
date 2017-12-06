@@ -1,12 +1,20 @@
 .portrait {
 	width: 300px;
-	height: 250px;
+	height: 210px;
 	float: left;
 }
 
 .character {
 	margin-left: 300px;
-	height: 250px;
+	height: 210px;
+}
+
+.background-text {
+	width: 350px;
+	text-align: left;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
 #characterImg {
@@ -47,5 +55,9 @@ hr {
 }
 
 h3 {
+	margin: 3px;
+}
+
+h4 {
 	margin: 3px;
 }

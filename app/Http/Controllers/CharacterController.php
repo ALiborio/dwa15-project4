@@ -78,7 +78,7 @@ class CharacterController extends Controller
         
         $character->gender = $request->input('gender');
         $character->race_id = $request->input('race');
-        $character->class_id = $request->input('class');
+        $character->profession_id = $request->input('class');
         $character->lawfulness = $request->input('lawchaos');
         $character->morality = $request->input('goodevil');
 
@@ -119,7 +119,7 @@ class CharacterController extends Controller
         # Build on the query
         foreach ($request->all() as $field => $term) {
             if ($term != null) {
-                if($field == 'race_id' or $field == 'class_id') {
+                if($field == 'race_id' or $field == 'profession_id') {
                     $query->where($field, '=', $term);
                 } elseif ($field == 'level') {
                     $query->where($field, '>=', $term);
@@ -165,7 +165,7 @@ class CharacterController extends Controller
                 return view('character.sheet')->with(['character' => $result]);
             } else {
                 $race = Race::find($result->race_id);
-                $class = Profession::find($result->class_id);
+                $class = Profession::find($result->profession_id);
                 return view('character.sheet')->with([
                     'character' => $result,
                     'race' => $race,
@@ -215,7 +215,7 @@ class CharacterController extends Controller
         $character->name = $request->input('name');
         $character->gender = $request->input('gender');
         $character->race_id = $request->input('race');
-        $character->class_id = $request->input('class');
+        $character->profession_id = $request->input('class');
         $character->lawfulness = $request->input('lawchaos');
         $character->morality = $request->input('goodevil');
 
@@ -250,7 +250,7 @@ class CharacterController extends Controller
     {
         $result = Character::find($id);
         $race = Race::find($result->race_id);
-        $class = Profession::find($result->class_id);
+        $class = Profession::find($result->profession_id);
         return view('character.delete')->with([
             'character' => $result,
             'race' => $race,

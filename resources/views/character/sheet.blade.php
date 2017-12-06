@@ -36,15 +36,19 @@ GameMaster - Character Sheet
                 {{ $character->alignment() }}
             </p>
         </div>
-
+        <hr>
+        <div class="background-text">
+            {{ $character->background }}
+        </div>
+        <hr>
         <h3> {{ 'Level '.$character->level }} </h3>
         <hr>
         <div class="stats">
             @foreach($character->stats as $stat)
-                <h3>
+                <h4>
                     <span class="attribute-name">{{ $stat->name }}</span>
                     <span class="attribute-num">{{ $stat->pivot->value }}</span>
-                </h3>
+                </h4>
             @endforeach
         </div>
         <hr>

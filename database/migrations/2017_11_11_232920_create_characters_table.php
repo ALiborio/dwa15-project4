@@ -18,24 +18,19 @@ class CreateCharactersTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->enum('gender', ['male','female'])->nullable();
-            $table->integer('class_id')->unsigned();
+            $table->integer('profession_id')->unsigned();
             $table->integer('race_id')->unsigned();
             $table->enum('lawfulness', ['lawful', 'neutral', 'chaotic'])->nullable();
             $table->enum('morality', ['good', 'neutral', 'evil'])->nullable();
             $table->text('background')->nullable();
             $table->binary('image')->nullable();
             $table->integer('level');
-            // Moved to stats pivot table
-            // $table->integer('strength');
-            // $table->integer('dexterity');
-            // $table->integer('constitution');
-            // $table->integer('intelligence');
-            // $table->integer('wisdom');
-            // $table->integer('charisma');
+            $table->integer('user_id')->unsigned();
 
             # Setup foreign keys
-            $table->foreign('class_id')->references('id')->on('professions');
+            $table->foreign('profession_id')->references('id')->on('professions');
             $table->foreign('race_id')->references('id')->on('races');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

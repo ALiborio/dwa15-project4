@@ -12,12 +12,7 @@ class StatsTableSeeder extends Seeder
      */
     public function run()
     {
-         // $table->integer('strength');
-         //    $table->integer('dexterity');
-         //    $table->integer('constitution');
-         //    $table->integer('intelligence');
-         //    $table->integer('wisdom');
-         //    $table->integer('charisma')
+
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
