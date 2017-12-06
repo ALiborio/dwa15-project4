@@ -35,24 +35,47 @@
 
 </head>
 <body>
-    <nav>
-        <span class="nav-home @if(Route::currentRouteName() =='index') {{ 'nav-selected' }} @endif game-master">
-            <a href="{{ route('home') }}"><img src="{{ asset('images/d20.png') }}"> GameMaster</a>
-        </span>
-        <span class="nav-link @if(Route::currentRouteName() =='createCharacter') {{ 'nav-selected' }} @endif">
-            <a href="{{ route('createCharacter') }}">New</a>
-        </span>
-        <span class="nav-link @if(Route::currentRouteName() =='showCharacter' or Route::currentRouteName() == 'editCharacter') {{ 'nav-selected' }} @endif">
-            <a href="/character/all">Characters</a>
-        </span>
-
-        <!-- Right Aligned Nav Bar Items -->
-        <span class="nav-link nav-disabled right">
-            Log In
-        </span>
-        <span class="nav-link nav-disabled right">
-            Sign Up
-        </span>
+    <nav id="primary_nav_wrap">
+        <ul class="left">
+            <li class="game-master nav-home left @if(Route::currentRouteName() =='home') {{ 'current-menu-item' }} @endif">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('images/d20.png') }}">
+                    GameMaster
+                </a>
+            </li>
+            <li class="left @if(substr(Route::currentRouteName(), 0, 9) =='character') {{ 'current-menu-item' }} @endif">
+                <a href="#">Characters</a>
+                <ul>
+                    <li><a href="{{ route('characterCreate') }}">New</a></li>
+                    <li><a href="{{ route('characterIndex') }}">View</a></li>
+                </ul>
+            </li>
+            <li class="left @if(substr(Route::currentRouteName(), 0, 4) =='race') {{ 'current-menu-item' }} @endif">
+                <a href="#">Races</a>
+                <ul>
+                  <li><a href="#">New</a></li>
+                  <li><a href="#">View</a></li>
+                </ul>
+            </li>
+            <li class="left @if(substr(Route::currentRouteName(), 0, 10) =='profession') {{ 'current-menu-item' }} @endif">
+            <a href="#">Classes</a>
+                <ul>
+                    <li><a href="#">New</a></li>
+                    <li><a href="#">View</a></li>
+                </ul>
+            </li>
+            <li class="left nav-disabled">
+                <a href="#">Parties</a>
+            </li>
+        </ul>
+        <ul class="right nav-disabled">
+            <li class="right nav-disabled">
+                <a href="#">Log In</a>
+            </li>
+            <li class="right nav-disabled">
+                <a href="#">Sign Up</a>
+            </li>
+        </ul>
     </nav>
 
     @if(session('alert'))
