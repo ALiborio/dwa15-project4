@@ -183,11 +183,13 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $character = Character::find($id);
         if ($character == null) {
             return view('character.sheet')->with(['character' => $character]);
+        } elseif ($request->user()->id != $character->id) {
+            return redirect('/character/'.$id)->with('alert', 'Cannot edit '.$character->name.', you did not create it.');
         } else {
             $classList = Profession::all();
             $raceList = Race::all();
@@ -248,16 +250,21 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
-        $result = Character::find($id);
-        $race = Race::find($result->race_id);
-        $class = Profession::find($result->profession_id);
-        return view('character.delete')->with([
-            'character' => $result,
-            'race' => $race,
-            'class' => $class
-        ]);
+        $character = Character::find($id);
+        $race = Race::find($character->race_id);
+        $class = Profession::find($character->profession_id);
+        if ($request->user()->id != $character->id) {
+            return redirect('/character/'.$id)->with('alert', 'Cannot delete '.$character->name.', you did not create it.');
+        } else {
+            return view('character.delete')->with([
+                'character' => $character,
+                'race' => $race,
+                'class' => $class
+            ]);
+        }
+        
     }
 
     /**
