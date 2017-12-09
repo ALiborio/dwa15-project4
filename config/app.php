@@ -176,6 +176,7 @@ return [
         // GameMaster\Providers\BroadcastServiceProvider::class,
         GameMaster\Providers\EventServiceProvider::class,
         GameMaster\Providers\RouteServiceProvider::class,
+        GameMaster\Providers\ViewServiceProvider::class
 
     ],
 

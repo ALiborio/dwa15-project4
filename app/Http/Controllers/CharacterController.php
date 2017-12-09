@@ -88,7 +88,7 @@ class CharacterController extends Controller
         
         $character->image = $request->input('image');
 
-        dd(Auth::user());
+        $character->user_id = $request->input('user_id');
 
         #start with a blank character, level 1
         $character->level = 1;

@@ -36,10 +36,12 @@ GameMaster - Character Sheet
                 {{ $character->alignment() }}
             </p>
         </div>
-        <hr>
-        <div class="background-text">
-            {{ $character->background }}
-        </div>
+        @if($character->background)
+            <hr>
+            <div class="background-text">
+                {{ $character->background }}
+            </div>
+        @endif
         <hr>
         <h3> {{ 'Level '.$character->level }} </h3>
         <hr>
@@ -57,6 +59,7 @@ GameMaster - Character Sheet
         |
         <a href="/character/{{ $character->id }}/delete">Delete</a>
         @endif
+        <p>Created by {{ $character->user->name }}</p>
     @endif
 </div>
 

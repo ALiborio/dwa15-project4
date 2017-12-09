@@ -19,6 +19,7 @@
             {{ method_field('put') }}
         @endif
         {{ csrf_field() }}
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <div class="form-row">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="{{ old('name', $character->name ?? '') }}">

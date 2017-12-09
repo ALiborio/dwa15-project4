@@ -16,22 +16,24 @@ Route::get('/', function() {
     return view('welcome');
 })->name('home');
 
-# Create/Store
-Route::get('/character/new', "CharacterController@create")->name('characterCreate');
-Route::post('/character', "CharacterController@store");
+Route::group(['middleware' => 'auth'], function () {
+    # Create/Store
+    Route::get('/character/new', 'CharacterController@create')->name('characterCreate');
+    Route::post('/character', 'CharacterController@store');
+
+    # Edit/Update
+    Route::get('/character/{id}/edit', "CharacterController@edit")->name('characterEdit');
+    Route::put('/character/{id}', "CharacterController@update");
+
+    # Delete
+    Route::get('/character/{id}/delete', "CharacterController@delete")->name('characterDelete');
+    Route::delete('/character/{id}', "CharacterController@destroy");
+});
 
 # Search/Show
 Route::get('/character/', "CharacterController@index")->name('characterIndex');
 Route::get('/character/search', "CharacterController@search")->name('characterSearch');
 Route::get('/character/{id}', "CharacterController@show")->name('characterShow');
-
-# Edit/Update
-Route::get('/character/{id}/edit', "CharacterController@edit")->name('characterEdit');
-Route::put('/character/{id}', "CharacterController@update");
-
-# Delete
-Route::get('/character/{id}/delete', "CharacterController@delete")->name('characterDelete');
-Route::delete('/character/{id}', "CharacterController@destroy");
 
 #Database Debug function
 Route::get('/debug', function () {
