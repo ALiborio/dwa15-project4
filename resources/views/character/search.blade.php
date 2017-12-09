@@ -56,7 +56,7 @@
                     </div>
                     <div>
                         <a href="/character/{{ $character->id }}">View</a> 
-                        @if (Auth::check())
+                        @if (Auth::user()->id == $character->user_id)
                          |
                         <a href="/character/{{ $character->id }}/edit">Edit</a> 
                          |
