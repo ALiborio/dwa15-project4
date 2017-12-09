@@ -30,15 +30,10 @@ class CreateRacesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
-            $table->set('bonus_attr', [
-                'strength',
-                'dexterity',
-                'constitution',
-                'intelligence',
-                'wisdom',
-                'charisma'
-            ])->nullable();
             $table->text('description')->nullable();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

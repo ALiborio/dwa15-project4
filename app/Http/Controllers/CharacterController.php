@@ -88,8 +88,10 @@ class CharacterController extends Controller
         
         $character->image = $request->input('image');
 
+        dd(Auth::user());
+
         #start with a blank character, level 1
-         $character->level = 1;
+        $character->level = 1;
 
         # save it in the database
         $character->save();

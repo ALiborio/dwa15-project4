@@ -21,6 +21,11 @@ class Character extends Model
         return $this->belongsToMany('GameMaster\Stat')->withPivot('value');;
     }
 
+    public function user()
+    {
+        return $this->belongsTo('GameMaster\User');
+    }
+
     public function alignment()
     {
         if ($this->lawfulness == 'neutral' && $this->morality == 'neutral') {

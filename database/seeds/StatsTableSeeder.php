@@ -16,37 +16,43 @@ class StatsTableSeeder extends Seeder
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'name' => 'Strength'
+            'name' => 'Strength',
+            'user_id' => 1
         ]);
 
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'name' => 'Dexterity'
+            'name' => 'Dexterity',
+            'user_id' => 1
         ]);
 
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'name' => 'Constitution'
+            'name' => 'Constitution',
+            'user_id' => 1
         ]);
 
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'name' => 'Intelligence'
+            'name' => 'Intelligence',
+            'user_id' => 1
         ]);
 
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'name' => 'Wisdom'
+            'name' => 'Wisdom',
+            'user_id' => 1
         ]);
 
         Stat::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'name' => 'Charisma'
+            'name' => 'Charisma',
+            'user_id' => 1
         ]);
     }
 }

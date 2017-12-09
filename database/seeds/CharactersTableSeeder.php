@@ -53,7 +53,8 @@ class CharactersTableSeeder extends Seeder
                 'profession_id' => rand(1,10),
                 'level' => 1,
                 'lawfulness' => $lawfulness,
-                'morality' => $morality
+                'morality' => $morality,
+                'user_id' => 1
         ]);
         }
     }

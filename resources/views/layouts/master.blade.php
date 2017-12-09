@@ -46,21 +46,26 @@
             <li class="left @if(substr(Route::currentRouteName(), 0, 9) =='character') {{ 'current-menu-item' }} @endif">
                 <a href="#">Characters</a>
                 <ul>
-                    <li><a href="{{ route('characterCreate') }}">New</a></li>
+                    <li @if (!Auth::check()) class="nav-disabled" @endif>
+                         
+                        <a href="@if (Auth::check()) {{ route('characterCreate') }} @else # @endif">
+                            New
+                        </a>
+                        </li>
                     <li><a href="{{ route('characterIndex') }}">View</a></li>
                 </ul>
             </li>
             <li class="left @if(substr(Route::currentRouteName(), 0, 4) =='race') {{ 'current-menu-item' }} @endif">
                 <a href="#">Races</a>
                 <ul>
-                  <li><a href="#">New</a></li>
+                  <li @if(!Auth::check()) class="nav-disabled" @endif><a href="#">New</a></li>
                   <li><a href="#">View</a></li>
                 </ul>
             </li>
             <li class="left @if(substr(Route::currentRouteName(), 0, 10) =='profession') {{ 'current-menu-item' }} @endif">
             <a href="#">Classes</a>
                 <ul>
-                    <li><a href="#">New</a></li>
+                    <li @if(!Auth::check()) class="nav-disabled" @endif><a href="#">New</a></li>
                     <li><a href="#">View</a></li>
                 </ul>
             </li>
@@ -68,13 +73,22 @@
                 <a href="#">Parties</a>
             </li>
         </ul>
-        <ul class="right nav-disabled">
-            <li class="right nav-disabled">
-                <a href="#">Log In</a>
-            </li>
-            <li class="right nav-disabled">
-                <a href="#">Sign Up</a>
-            </li>
+        <ul class="right">
+            @if (Auth::check())
+                <li class="right">
+                    <form method='POST' id='logout' action='/logout'>
+                        {{ csrf_field() }}
+                        <a href='#' onClick='document.getElementById("logout").submit();'>Logout</a>
+                    </form>
+                </li>
+            @else
+                <li class="right">
+                    <a href="/login">Log In</a>
+                </li>
+                <li class="right">
+                    <a href="/register">Sign Up</a>
+                </li>
+            @endif
         </ul>
     </nav>
 

@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function characters()
+    {
+        return $this->hasMany('GameMaster\Character');
+    }
+
+    public function professions()
+    {
+        return $this->hasMany('GameMaster\Profession');
+    }
+
+    public function races()
+    {
+        return $this->hasMany('GameMaster\Race');
+    }
+
+    public function stats()
+    {
+        return $this->hasMany('GameMaster\Stat');
+    }
 }
