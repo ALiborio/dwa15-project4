@@ -54,10 +54,12 @@ GameMaster - Character Sheet
             @endforeach
         </div>
         <hr>
-        @if (Auth::user()->id == $character->user_id)
-            <a href="/character/{{ $character->id }}/edit">Edit</a>
-            |
-            <a href="/character/{{ $character->id }}/delete">Delete</a>
+        @if (Auth::check())
+            @if (Auth::user()->id == $character->user_id)
+                <a href="/character/{{ $character->id }}/edit">Edit</a>
+                |
+                <a href="/character/{{ $character->id }}/delete">Delete</a>
+            @endif
         @endif
         <p>Created by {{ $character->user->name }}</p>
     @endif

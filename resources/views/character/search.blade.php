@@ -55,12 +55,14 @@
                         {{ $character->profession['name'] }}
                     </div>
                     <div>
-                        <a href="/character/{{ $character->id }}">View</a> 
-                        @if (Auth::user()->id == $character->user_id)
-                         |
-                        <a href="/character/{{ $character->id }}/edit">Edit</a> 
-                         |
-                        <a href="/character/{{ $character->id }}/delete">Delete</a>
+                        <a href="/character/{{ $character->id }}">View</a>
+                        @if(Auth::check())
+                            @if (Auth::user()->id == $character->user_id)
+                             |
+                            <a href="/character/{{ $character->id }}/edit">Edit</a> 
+                             |
+                            <a href="/character/{{ $character->id }}/delete">Delete</a>
+                            @endif
                         @endif
                     </div>
                 </div>
