@@ -30,7 +30,6 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        //
         $results = Character::all();
         $classList = Profession::all();
         $raceList = Race::all();
@@ -82,13 +81,11 @@ class CharacterController extends Controller
         $character->lawfulness = $request->input('lawchaos');
         $character->morality = $request->input('goodevil');
 
-        if ($request->input('background') !== 'Enter some background about your character...') {
-            $character->background = $request->input('background');
-        }
+        $character->background = $request->input('background');
         
         $character->image = $request->input('image');
 
-        $character->user_id = $request->input('user_id');
+        $character->user_id = $request->user()->id;
 
         #start with a blank character, level 1
         $character->level = 1;
@@ -188,7 +185,7 @@ class CharacterController extends Controller
         $character = Character::find($id);
         if ($character == null) {
             return view('character.sheet')->with(['character' => $character]);
-        } elseif ($request->user()->id != $character->id) {
+        } elseif ($request->user()->id != $character->user_id) {
             return redirect('/character/'.$id)->with('alert', 'Cannot edit '.$character->name.', you did not create it.');
         } else {
             $classList = Profession::all();
@@ -223,9 +220,7 @@ class CharacterController extends Controller
         $character->lawfulness = $request->input('lawchaos');
         $character->morality = $request->input('goodevil');
 
-        if ($request->input('background') !== 'Enter some background about your character...') {
-            $character->background = $request->input('background');
-        }
+        $character->background = $request->input('background');
         
         $character->image = $request->input('image');
         /*
@@ -255,7 +250,7 @@ class CharacterController extends Controller
         $character = Character::find($id);
         $race = Race::find($character->race_id);
         $class = Profession::find($character->profession_id);
-        if ($request->user()->id != $character->id) {
+        if ($request->user()->id != $character->user_id) {
             return redirect('/character/'.$id)->with('alert', 'Cannot delete '.$character->name.', you did not create it.');
         } else {
             return view('character.delete')->with([

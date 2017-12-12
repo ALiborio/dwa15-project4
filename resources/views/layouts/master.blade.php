@@ -47,10 +47,7 @@
                 <a href="#">Characters</a>
                 <ul>
                     <li @if (!Auth::check()) class="nav-disabled" @endif>
-                         
-                        <a href="@if (Auth::check()) {{ route('characterCreate') }} @else # @endif">
-                            New
-                        </a>
+                        <a href="@if (Auth::check()) {{ route('characterCreate') }} @else # @endif">New</a>
                         </li>
                     <li><a href="{{ route('characterIndex') }}">View</a></li>
                 </ul>
@@ -58,8 +55,9 @@
             <li class="left @if(substr(Route::currentRouteName(), 0, 4) =='race') {{ 'current-menu-item' }} @endif">
                 <a href="#">Races</a>
                 <ul>
-                  <li @if(!Auth::check()) class="nav-disabled" @endif><a href="#">New</a></li>
-                  <li><a href="#">View</a></li>
+                  <li @if(!Auth::check()) class="nav-disabled" @endif>
+                    <a href="@if (Auth::check()) {{ route('raceCreate') }} @else # @endif">New</a></li>
+                  <li><a href="{{ route('raceIndex') }}">View</a></li>
                 </ul>
             </li>
             <li class="left @if(substr(Route::currentRouteName(), 0, 10) =='profession') {{ 'current-menu-item' }} @endif">

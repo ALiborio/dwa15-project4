@@ -19,7 +19,6 @@
             {{ method_field('put') }}
         @endif
         {{ csrf_field() }}
-        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <div class="form-row">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="{{ old('name', $character->name ?? '') }}">
@@ -92,9 +91,8 @@
             </div>
         @endif
         <h3>Background</h3>
-        <textarea name="background"
-   rows="4" cols="50">{{ isset($character) ? $character->background : 'Enter some background about your character...' }}
-        </textarea>
+        <textarea name="background" placeholder="Enter some background about your character..." 
+   rows="4" cols="50">{{ isset($character) ? $character->background : '' }}</textarea>
         <h3 class="alignment">Alignment</h3>
         <div class="alignment-radios">
             <div class="radio-group">

@@ -12,4 +12,9 @@ class Race extends Model
         # Define a one-to-many relationship.
         return $this->hasMany('GameMaster\Character');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('GameMaster\User');
+    }
 }

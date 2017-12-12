@@ -1,5 +1,5 @@
 .container {
-	width: fit-content;
+	width: 60%;
 	margin: auto;
 	margin-top: 10px;
 	text-align: center;
@@ -51,6 +51,11 @@ h1.game-master {
 	float:left;
 
 }
+
+.right-align {
+	text-align: right;
+}
+
 .alert {
 	background-color: #efec32;
 	margin: auto;
