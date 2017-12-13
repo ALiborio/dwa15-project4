@@ -4,6 +4,7 @@
     <title>
         @yield('title', 'GameMaster')
     </title>
+    <meta charset='utf-8'>
     <!-- ****** faviconit.com favicons ****** -->
     <link rel="shortcut icon" href="{{ asset('/images/icons/favicon.ico') }}">
     <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('/images/icons/favicon.ico') }}">
@@ -27,7 +28,6 @@
     <meta name="msapplication-config" content="{{ asset('/images/icons/browserconfig.xml') }}">
     <!-- ****** faviconit.com favicons ****** -->
 
-    <meta charset='utf-8'>
     <link href="/css/main.css" type='text/css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Spectral+SC" rel="stylesheet">
     <script src="https://use.fontawesome.com/623053ff70.js"></script>
@@ -39,7 +39,7 @@
         <ul class="left">
             <li class="game-master nav-home left @if(Route::currentRouteName() =='home') {{ 'current-menu-item' }} @endif">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('images/d20.png') }}">
+                    <img src="{{ asset('images/d20.png') }}" alt="GameMaster">
                     GameMaster
                 </a>
             </li>

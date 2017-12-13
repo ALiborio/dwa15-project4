@@ -5,7 +5,7 @@
     <h1 class="game-master">GameMaster</h1>
 
     <div>
-        <img src="{{ asset('images/d20.png') }}">
+        <img src="{{ asset('images/d20.png') }}" alt="GameMaster">
     </div>
 
     <p>
