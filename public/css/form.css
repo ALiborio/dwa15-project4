@@ -1,5 +1,16 @@
+.character-form {
+  width: 550px;
+  margin: auto;
+}
+
+.race-form {
+  width: 50%;
+  margin: auto;
+}
+
 .form-row {
-	margin: 10px 5px;
+  width: 450px;
+	margin: 10px auto;
 	text-align: left;
 }
 
@@ -14,8 +25,9 @@
 	margin-bottom: 2px;
 }
 
-.alignment-radios {
-
+.radio-button-row {
+  width: 450px;
+  margin: auto;
 }
 
 .errors {

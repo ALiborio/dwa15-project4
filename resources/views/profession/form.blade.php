@@ -6,22 +6,22 @@
 @endpush
 
 @section('content')
-<div class="container race-form">
+<div class="container profession-form">
     <h1>
-        @if(isset($race))
-            Edit Race
+        @if(isset($profession))
+            Edit Class
         @else
-            Create a New Race
+            Create a New Class
         @endif
     </h1>
-    <form action="/race{{ isset($race) ? '/'.$race->id : '' }}" method="POST">
-        @if(isset($race))
+    <form action="/class{{ isset($profession) ? '/'.$profession->id : '' }}" method="POST">
+        @if(isset($profession))
             {{ method_field('put') }}
         @endif
         {{ csrf_field() }}
         <div class="form-row">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="{{ old('name', $race->name ?? '') }}">
+            <input type="text" name="name" id="name" value="{{ old('name', $profession->name ?? '') }}">
             @if($errors->get('name'))
                 <div class="errors">
                     @foreach($errors->get('name') as $error)
@@ -30,16 +30,16 @@
                 </div>
             @endif
         <h3>Description</h3>
-        <textarea name="description" placeholder="Enter a description of this race..." 
-   rows="4" cols="50">{{ isset($race) ? $race->description : '' }}</textarea>
+        <textarea name="description" placeholder="Enter a description of this class..." 
+   rows="4" cols="50">{{ isset($profession) ? $profession->description : '' }}</textarea>
         </div>
         <div class="form-row submit">
             <input type="submit" 
-            value="{{ isset($race) ? 'Update Race' : 'Create Race' }}" 
+            value="{{ isset($profession) ? 'Update Class' : 'Create Class' }}" 
         class="submit">
         </div>
     </form>
-    @if (isset($race))
+    @if (isset($profession))
         <a href="{{ url()->previous() }}">Cancel</a>
     @endif
 </div>

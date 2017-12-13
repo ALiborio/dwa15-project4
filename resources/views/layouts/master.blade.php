@@ -63,8 +63,10 @@
             <li class="left @if(substr(Route::currentRouteName(), 0, 10) =='profession') {{ 'current-menu-item' }} @endif">
             <a href="#">Classes</a>
                 <ul>
-                    <li @if(!Auth::check()) class="nav-disabled" @endif><a href="#">New</a></li>
-                    <li><a href="#">View</a></li>
+                    <li @if(!Auth::check()) class="nav-disabled" @endif>
+                        <a href="@if (Auth::check()) {{ route('professionCreate') }} @else # @endif">New</a>
+                    </li>
+                    <li><a href="{{ route('professionIndex') }}">View</a></li>
                 </ul>
             </li>
             <li class="left nav-disabled">
