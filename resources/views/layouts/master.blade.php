@@ -29,7 +29,9 @@
     <!-- ****** faviconit.com favicons ****** -->
 
     <link href="/css/main.css" type='text/css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Spectral+SC" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Spectral+SC');
+    </style>
     <script src="https://use.fontawesome.com/623053ff70.js"></script>
     @stack('head')
 
