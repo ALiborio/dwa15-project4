@@ -68,6 +68,10 @@
   width: 40px;
 }
 
+.stat-modifer {
+  width: 3em;
+}
+
 label {
 	margin-left: 4px;
 	margin-right: 4px;

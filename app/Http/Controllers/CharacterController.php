@@ -30,7 +30,7 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        $results = Character::all();
+        $results = Character::with(['profession', 'race'])->get();
         $classList = Profession::all();
         $raceList = Race::all();
         return view('character.search')->with([
@@ -95,9 +95,7 @@ class CharacterController extends Controller
 
         # randomly generate the stats
         $stats = Stat::all();
-        foreach ($stats as $stat) {
-                $statList[$stat->id] = ['value' => rand(1,20)];
-            }
+        $statList = $character->generateStats($stats);
         $character->stats()->sync($statList);
 
         return redirect('/character/')->with('alert', 'Character '.$character->name.' was added.');
@@ -130,7 +128,7 @@ class CharacterController extends Controller
         }
 
         # Execute the query
-        $results = $query->get();
+        $results = $query->with(['profession', 'race'])->get();
 
         $classList = Profession::all();
         $raceList = Race::all();
@@ -150,7 +148,7 @@ class CharacterController extends Controller
     public function show($id)
     {
         if ($id == 'all') {
-            $results = Character::all();
+            $results = Character::with(['profession', 'race'])->get();
             $classList = Profession::all();
             $raceList = Race::all();
             return view('character.search')->with([
@@ -223,15 +221,6 @@ class CharacterController extends Controller
         $character->background = $request->input('background');
         
         $character->image = $request->input('image');
-        /*
-        For now, no updates to levels/stats
-        $character->level = 1;
-        $character->strength = 0;
-        $character->dexterity = 0;
-        $character->constitution = 0;
-        $character->intelligence = 0;
-        $character->wisdom = 0;
-        $character->charisma = 0;*/
 
         # save it in the database
         $character->save();

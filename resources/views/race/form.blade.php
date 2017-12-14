@@ -29,9 +29,22 @@
                     @endforeach
                 </div>
             @endif
-        <h3>Description</h3>
-        <textarea name="description" placeholder="Enter a description of this race..." 
-   rows="4" cols="50">{{ isset($race) ? $race->description : '' }}</textarea>
+            <h3>Description</h3>
+            <textarea name="description" placeholder="Enter a description of this race..." 
+       rows="4" cols="50">{{ isset($race) ? $race->description : '' }}</textarea>
+        </div>
+        <div class="form-row">
+            <h3>Stat Modifiers</h3>
+            @foreach($stats as $stat)
+            <div>
+                <label for="{{ $stat->name }}">{{ $stat->name }}</label>
+                @if (isset($race))
+                <input type="number" name="{{ $stat->name }}" id="{{ $stat->name }}" value="{{ old($stat->name, $race->stats->where('id', $stat->id)->first()->pivot->modifier ?? '') }}" class="stat-modifier" min="-10" max="10">
+                @else
+                <input type="number" name="{{ $stat->name }}" id="{{ $stat->name }}" value="{{ old($stat->name) }}" class="stat-modifier" min="-10" max="10">
+                @endif
+            </div>
+            @endforeach
         </div>
         <div class="form-row submit">
             <input type="submit" 

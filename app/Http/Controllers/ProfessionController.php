@@ -4,6 +4,7 @@ namespace GameMaster\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GameMaster\Profession;
+use GameMaster\Stat;
 
 class ProfessionController extends Controller
 {
@@ -31,7 +32,10 @@ class ProfessionController extends Controller
      */
     public function create()
     {
-        return view('profession.form');
+        $stats = Stat::all();
+        return view('profession.form')->with([
+            'stats' => $stats
+        ]);
     }
 
     /**
@@ -53,6 +57,10 @@ class ProfessionController extends Controller
 
         # save it in the database
         $profession->save();
+
+        $statList[$request->input('primary')] = ['ranking' => 'primary'];
+        $statList[$request->input('secondary')] = ['ranking' => 'secondary'];
+        $profession->stats()->sync($statList); 
 
         return redirect('/class/')->with('alert', 'Class '.$profession->name.' was added.');
     }
@@ -111,7 +119,11 @@ class ProfessionController extends Controller
         } elseif ($request->user()->id != $profession->user_id) {
             return redirect('/class/'.$id)->with('alert', 'Cannot edit '.$profession->name.', you did not create it.');
         } else {
-            return view('profession.form')->with(['profession' => $profession]);
+            $stats = Stat::with('professions')->get();
+            return view('profession.form')->with([
+                'profession' => $profession,
+                'stats' => $stats
+            ]);
         }
     }
 
@@ -134,6 +146,10 @@ class ProfessionController extends Controller
 
         # save it in the database
         $profession->save();
+
+        $statList[$request->input('primary')] = ['ranking' => 'primary'];
+        $statList[$request->input('secondary')] = ['ranking' => 'secondary'];
+        $profession->stats()->sync($statList); 
 
         return redirect('/class/')->with('alert', 'Class '.$profession->name.' was updated.');
     }

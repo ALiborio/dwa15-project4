@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use GameMaster\ExtendedBlueprint;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use GameMaster\ExtendedMySqlGrammar;
 
 class CreateRacesTable extends Migration
 {
@@ -14,19 +13,8 @@ class CreateRacesTable extends Migration
      */
     public function up()
     {
-        // set new grammar class
-        DB::connection()->setSchemaGrammar(new ExtendedMySqlGrammar());
-
-        // get custom schema object
-        $schema = DB::connection()->getSchemaBuilder();
-
-        // bind new blueprint class
-        $schema->blueprintResolver(function($table, $callback) {
-            return new ExtendedBlueprint($table, $callback);
-        });
-
-        // then create tables 
-        $schema->create('races', function (ExtendedBlueprint $table) {
+        
+        Schema::create('races', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('name');

@@ -4,6 +4,7 @@ namespace GameMaster\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GameMaster\Race;
+use GameMaster\Stat;
 
 class RaceController extends Controller
 {
@@ -31,7 +32,10 @@ class RaceController extends Controller
      */
     public function create()
     {
-        return view('race.form');
+        $stats = Stat::all();
+        return view('race.form')->with([
+            'stats' => $stats
+        ]);
     }
 
     /**
@@ -111,7 +115,11 @@ class RaceController extends Controller
         } elseif ($request->user()->id != $race->user_id) {
             return redirect('/race/'.$id)->with('alert', 'Cannot edit '.$race->name.', you did not create it.');
         } else {
-            return view('race.form')->with(['race' => $race]);
+            $stats = Stat::with('races')->get();
+            return view('race.form')->with([
+                'race' => $race,
+                'stats' => $stats
+            ]);
         }
     }
 

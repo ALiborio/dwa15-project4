@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->hasMany('GameMaster\Character');
     }
 
+    public function parties()
+    {
+        return $this->hasMany('GameMaster\Party');
+    }
+
     public function professions()
     {
         return $this->hasMany('GameMaster\Profession');

@@ -54,7 +54,8 @@ class CharactersTableSeeder extends Seeder
                 'level' => 1,
                 'lawfulness' => $lawfulness,
                 'morality' => $morality,
-                'user_id' => 1
+                'user_id' => 1,
+                'party_id' => $i % 5 + 1
         ]);
         }
     }

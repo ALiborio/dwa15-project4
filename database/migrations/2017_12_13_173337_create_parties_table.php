@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfessionsTable extends Migration
+class CreatePartiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateProfessionsTable extends Migration
      */
     public function up()
     {
-        # The external name for this will be 'class' but we will use profession to avoid confusion with Class keyword
-        Schema::create('professions', function (Blueprint $table) {
+        Schema::create('parties', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
@@ -32,6 +31,6 @@ class CreateProfessionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professions');
+        Schema::dropIfExists('parties');
     }
 }

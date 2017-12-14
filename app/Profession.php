@@ -8,9 +8,12 @@ class Profession extends Model
 {
     public function characters()
     {
-        # Profession has many Characters
-        # Define a one-to-many relationship.
         return $this->hasMany('GameMaster\Character');
+    }
+
+    public function stats()
+    {
+        return $this->belongsToMany('GameMaster\Stat')->withPivot('ranking');;
     }
 
     public function user()
