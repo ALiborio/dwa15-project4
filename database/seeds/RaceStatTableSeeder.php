@@ -34,7 +34,6 @@ class RaceStatTableSeeder extends Seeder
                 $stat = Stat::where('name', 'LIKE', $statName)->first();
                 $statList[$stat->id] = ['modifier' => $modifier];
             }
-            dump($statList);
             $race->stats()->sync($statList);
             unset($statList);
         }
