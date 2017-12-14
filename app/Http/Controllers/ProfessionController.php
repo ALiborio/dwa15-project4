@@ -184,7 +184,7 @@ class ProfessionController extends Controller
             // This will display the class not found default message.
             return view('profession.view')->with(['profession' => $profession]);
         } else {
-            // $profession->stats()->detach();
+            $profession->stats()->detach();
             $profession->delete();
             return redirect('/class/all')->with('alert', 'Class '.$profession->name.' was deleted.');
         }

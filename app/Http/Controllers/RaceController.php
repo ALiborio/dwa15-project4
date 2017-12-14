@@ -57,6 +57,14 @@ class RaceController extends Controller
 
         # save it in the database
         $race->save();
+        
+        $stats = Stat::all();
+        foreach ($stats as $stat) {
+            if($request[$stat->name]) {
+                $statList[$stat->id] = ['modifier' => $request[$stat->name]];
+            }
+        }
+        $race->stats()->sync($statList);
 
         return redirect('/race/')->with('alert', 'Race '.$race->name.' was added.');
     }
@@ -143,6 +151,14 @@ class RaceController extends Controller
         # save it in the database
         $race->save();
 
+        $stats = Stat::all();
+        foreach ($stats as $stat) {
+            if($request[$stat->name]) {
+                $statList[$stat->id] = ['modifier' => $request[$stat->name]];
+            }
+        }
+        $race->stats()->sync($statList);
+
         return redirect('/race/')->with('alert', 'Race '.$race->name.' was updated.');
     }
 
@@ -176,7 +192,7 @@ class RaceController extends Controller
             // This will display the race not found default message.
             return view('race.view')->with(['race' => $race]);
         } else {
-            // $race->stats()->detach();
+            $race->stats()->detach();
             $race->delete();
             return redirect('/race/all')->with('alert', 'Race '.$race->name.' was deleted.');
         }

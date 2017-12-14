@@ -29,12 +29,12 @@ GameMaster - Class
         <h3>Bonus Stats</h3>
         <hr>
         <div class="stats">
-            {{-- @foreach($profession->stats as $stat)
+            @foreach($profession->stats as $stat)
                 <h4>
                     <span class="attribute-name">{{ $stat->name }}</span>
-                    <span class="attribute-num">{{ $stat->pivot->value }}</span>
+                    <span class="attribute-num">{{ $stat->pivot->ranking }}</span>
                 </h4>
-            @endforeach --}}
+            @endforeach
         </div>
         <hr>
         @if (Auth::check())

@@ -29,12 +29,12 @@ GameMaster - Race
         <h3>Bonus Stats</h3>
         <hr>
         <div class="stats">
-            {{-- @foreach($race->stats as $stat)
+            @foreach($race->stats as $stat)
                 <h4>
                     <span class="attribute-name">{{ $stat->name }}</span>
-                    <span class="attribute-num">{{ $stat->pivot->value }}</span>
+                    <span class="attribute-num">{{ $stat->pivot->modifier }}</span>
                 </h4>
-            @endforeach --}}
+            @endforeach
         </div>
         <hr>
         @if (Auth::check())
