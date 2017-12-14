@@ -39,9 +39,9 @@
             @foreach($stats as $stat)
                 <label class='radio-label'>
                     @if (isset($profession) && $profession->stats->where('id', $stat->id)->first())
-                    <input type="radio" name="primary" id="{{$stat->name}}" value="{{ $stat->id }}" @if (old('primary') == $stat->id || $profession->stats->where('id', $stat->id)->first()->pivot->ranking == 'primary') CHECKED @endif>
+                    <input type="radio" name="primary" value="{{ $stat->id }}" @if (old('primary') == $stat->id || $profession->stats->where('id', $stat->id)->first()->pivot->ranking == 'primary') CHECKED @endif>
                     @else
-                    <input type="radio" name="primary" id="{{$stat->name}}" value="{{ $stat->id }}" @if (old('primary') == $stat->id) CHECKED @endif>
+                    <input type="radio" name="primary" value="{{ $stat->id }}" @if (old('primary') == $stat->id) CHECKED @endif>
                     @endif
                     <span class='inner-label sublabel'>{{ $stat->name }}</span>
                 </label>
@@ -56,9 +56,9 @@
             @foreach($stats as $stat)
                 <label class='radio-label'>
                     @if (isset($profession) && $profession->stats->where('id', $stat->id)->first())
-                    <input type="radio" name="secondary" id="{{$stat->name}}" value="{{ $stat->id }}" @if (old('secondary') == $stat->id  || $profession->stats->where('id', $stat->id)->first()->pivot->ranking == 'secondary') CHECKED @endif>
+                    <input type="radio" name="secondary" value="{{ $stat->id }}" @if (old('secondary') == $stat->id  || $profession->stats->where('id', $stat->id)->first()->pivot->ranking == 'secondary') CHECKED @endif>
                     @else
-                    <input type="radio" name="secondary" id="{{$stat->name}}" value="{{ $stat->id }}" @if (old('secondary') == $stat->id) CHECKED @endif>
+                    <input type="radio" name="secondary" value="{{ $stat->id }}" @if (old('secondary') == $stat->id) CHECKED @endif>
                     @endif
                     <span class='inner-label sublabel'>{{ $stat->name }}</span>
                 </label>
